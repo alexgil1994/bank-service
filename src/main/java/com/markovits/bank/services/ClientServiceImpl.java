@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -27,25 +30,30 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client register(ClientDTO clientDTO) {
+    public Client register(ClientDTO clientDTO) throws ParseException {
         if (StringUtils.isNotEmpty(clientDTO.getFullName()) && StringUtils.isNotBlank(clientDTO.getFullName()) &&
         StringUtils.isNotEmpty(clientDTO.getNationality()) && StringUtils.isNotBlank(clientDTO.getNationality()) &&
         StringUtils.isNotEmpty(clientDTO.getGender()) && StringUtils.isNotBlank(clientDTO.getGender()) &&
         clientDTO.getBirth() != null && clientDTO.getAnnualIncome() != null){
             // Init new Client
-            Client newClient = new Client();
-            newClient.setFullName(clientDTO.getFullName());
-            newClient.setNationality(clientDTO.getNationality());
-            newClient.setAnnualIncome(clientDTO.getAnnualIncome());
-            newClient.setBirth(clientDTO.getBirth());
-            newClient.setGender(clientDTO.getGender());
-            if (clientDTO.getAccountBalance() == null){
-                clientDTO.setAccountBalance(BigDecimal.valueOf(0));
-            }
-            newClient.setAccountBalance(clientDTO.getAccountBalance());
-
+            Client newClient = createNewClient(clientDTO);
             return clientRepository.save(newClient);
         } else throw new RuntimeException("Client registration failed because of empty parameters");
+    }
+
+    private Client createNewClient(ClientDTO clientDTO) throws ParseException {
+        Client newClient = new Client();
+        newClient.setFullName(clientDTO.getFullName());
+        newClient.setNationality(clientDTO.getNationality());
+        newClient.setAnnualIncome(clientDTO.getAnnualIncome());
+        Date dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(clientDTO.getBirth());
+        newClient.setBirth(clientDTO.getBirth());
+        newClient.setGender(clientDTO.getGender());
+        if (clientDTO.getAccountBalance() == null){
+            clientDTO.setAccountBalance(BigDecimal.valueOf(0));
+        }
+        newClient.setAccountBalance(clientDTO.getAccountBalance());
+        return newClient;
     }
 
 }

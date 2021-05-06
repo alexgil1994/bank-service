@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +19,7 @@ public class Client {
     private String fullName;
 
     @Column(name = "birth", nullable = false)
-    private Date birth;
+    private String birth;
 
     @Column(name = "accountBalance", nullable = false)
     private BigDecimal accountBalance;
@@ -52,7 +51,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long id, String fullName, Date birth, BigDecimal accountBalance, String nationality, String gender, BigDecimal annualIncome, Set<Loan> loanSet) {
+    public Client(Long id, String fullName, String birth, BigDecimal accountBalance, String nationality, String gender, BigDecimal annualIncome, Set<Loan> loanSet) {
         this.id = id;
         this.fullName = fullName;
         this.birth = birth;
@@ -79,11 +78,11 @@ public class Client {
         this.fullName = fullName;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 

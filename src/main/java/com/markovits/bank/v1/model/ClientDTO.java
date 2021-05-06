@@ -1,13 +1,12 @@
 package com.markovits.bank.v1.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class ClientDTO {
 
     private String fullName;
 
-    private Date birth;
+    private String birth;
 
     private BigDecimal accountBalance;
 
@@ -21,7 +20,7 @@ public class ClientDTO {
     public ClientDTO() {
     }
 
-    public ClientDTO(String fullName, Date birth, BigDecimal accountBalance, String nationality, String gender, BigDecimal annualIncome) {
+    public ClientDTO(String fullName, String birth, BigDecimal accountBalance, String nationality, String gender, BigDecimal annualIncome) {
         this.fullName = fullName;
         this.birth = birth;
         this.accountBalance = accountBalance;
@@ -38,11 +37,11 @@ public class ClientDTO {
         this.fullName = fullName;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 

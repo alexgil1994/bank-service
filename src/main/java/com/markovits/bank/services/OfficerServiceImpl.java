@@ -17,12 +17,12 @@ public class OfficerServiceImpl implements OfficerService {
     private OfficerRepository officerRepository;
 
     @Override
-    public Officer findClientById(Long id) {
+    public Officer findOfficerById(Long id) {
         Optional<Officer> optionalOfficer = officerRepository.findById(id);
         if (optionalOfficer.isPresent())
             return optionalOfficer.get();
         else
-            throw new RuntimeException("Officer was not found");
+            throw new RuntimeException("Officer was not found with id of " + id + ".");
     }
 
     @Override

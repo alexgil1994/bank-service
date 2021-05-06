@@ -17,7 +17,7 @@ public class Loan {
     @Column(name = "pending", nullable = false)
     private Boolean pending;
 
-    @Column(name = "authorized")
+    @Column(name = "authorized", nullable = false)
     private Boolean authorized;
 
     @Column(name = "loanValue", nullable = false)

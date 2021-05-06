@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @RestController
 @RequestMapping(ClientController.BASE_URL)
 public class ClientController {
@@ -18,7 +20,7 @@ public class ClientController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client register(@RequestBody ClientDTO clientDTO){
+    public Client register(@RequestBody ClientDTO clientDTO) throws ParseException {
         return clientServiceImpl.register(clientDTO);
     }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface OfficerService {
 
-    Officer findClientById(Long id);
+    Officer findOfficerById(Long id);
 
     Officer register(OfficerDTO officerDTO);
 

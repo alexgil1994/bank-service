@@ -11,4 +11,5 @@ public interface LoanRepository extends CrudRepository<Loan, Long> {
 
     Optional<Loan> findById(Long id);
 
+    Optional<Loan> findByUuid(String uuid);
 }

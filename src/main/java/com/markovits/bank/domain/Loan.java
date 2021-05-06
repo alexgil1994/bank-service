@@ -11,10 +11,13 @@ public class Loan {
     @Column(name = "id", nullable = false, unique = true, updatable = false)
     private Long id;
 
+    @Column(name = "uuid", nullable = false, unique = true)
+    private String uuid;
+
     @Column(name = "pending", nullable = false)
     private Boolean pending;
 
-    @Column(name = "authorized", nullable = false)
+    @Column(name = "authorized")
     private Boolean authorized;
 
     @Column(name = "loanValue", nullable = false)
@@ -31,8 +34,9 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(Long id, Boolean pending, Boolean authorized, BigDecimal loanValue, Client client, Officer officer) {
+    public Loan(Long id, String uuid, Boolean pending, Boolean authorized, BigDecimal loanValue, Client client, Officer officer) {
         this.id = id;
+        this.uuid = uuid;
         this.pending = pending;
         this.authorized = authorized;
         this.loanValue = loanValue;
@@ -40,13 +44,20 @@ public class Loan {
         this.officer = officer;
     }
 
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public Boolean getPending() {

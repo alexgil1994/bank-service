@@ -1,6 +1,7 @@
 package com.markovits.bank.controllers;
 
 import com.markovits.bank.domain.Loan;
+import com.markovits.bank.services.ClientServiceImpl;
 import com.markovits.bank.services.LoanServiceImpl;
 import com.markovits.bank.v1.model.EditLoanDTO;
 import com.markovits.bank.v1.model.LoanApplyDTO;

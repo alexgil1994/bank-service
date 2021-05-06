@@ -8,13 +8,11 @@ import com.markovits.bank.repositories.LoanRepository;
 import com.markovits.bank.repositories.OfficerRepository;
 import com.markovits.bank.v1.model.EditLoanDTO;
 import com.markovits.bank.v1.model.LoanApplyDTO;
-import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.Set;
 
@@ -35,6 +33,13 @@ public class LoanServiceImpl implements LoanService {
 
     @Autowired
     private ClientServiceImpl clientService;
+
+    // For Mockito Service testing
+    public void setLoanRepository(LoanRepository loanRepository, ClientRepository clientRepository, OfficerRepository officerRepository){
+        this.loanRepository = loanRepository;
+        this.clientRepository = clientRepository;
+        this.officerRepository = officerRepository;
+    }
 
     @Override
     public Loan findLoanById(Long id) {

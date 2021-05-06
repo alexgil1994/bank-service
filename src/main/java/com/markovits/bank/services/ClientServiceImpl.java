@@ -3,6 +3,7 @@ package com.markovits.bank.services;
 
 import com.markovits.bank.domain.Client;
 import com.markovits.bank.repositories.ClientRepository;
+import com.markovits.bank.repositories.OfficerRepository;
 import com.markovits.bank.v1.model.ClientDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    // For Mockito Service testing
+    public void setClientRepository(ClientRepository clientRepository){
+        this.clientRepository = clientRepository;
+    }
 
     @Override
     public Client findClientById(Long id) {

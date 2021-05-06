@@ -16,6 +16,11 @@ public class OfficerServiceImpl implements OfficerService {
     @Autowired
     private OfficerRepository officerRepository;
 
+    // For Mockito Service testing
+    public void setOfficerRepository(OfficerRepository officerRepository){
+        this.officerRepository = officerRepository;
+    }
+
     @Override
     public Officer findOfficerById(Long id) {
         Optional<Officer> optionalOfficer = officerRepository.findById(id);

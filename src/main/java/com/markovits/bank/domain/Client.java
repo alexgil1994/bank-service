@@ -21,6 +21,7 @@ public class Client {
     @Column(name = "birth", nullable = false)
     private String birth;
 
+    // TODO: 5/6/2021 AccountBalance could be an Entity with OneToOne connection with the Client
     @Column(name = "accountBalance", nullable = false)
     private BigDecimal accountBalance;
 

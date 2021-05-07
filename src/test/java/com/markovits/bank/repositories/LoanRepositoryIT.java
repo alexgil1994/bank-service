@@ -53,13 +53,13 @@ public class LoanRepositoryIT {
 
         loan1 = new Loan();
         loan1.setAuthorized(true);
-        loan.setUuid(RandomStringUtils.randomAlphanumeric(8));
+        loan1.setUuid(RandomStringUtils.randomAlphanumeric(8));
         loan1.setPending(false);
         loan1.setLoanValue(BigDecimal.valueOf(15000));
 
         loan2 = new Loan();
         loan2.setAuthorized(false);
-        loan.setUuid(RandomStringUtils.randomAlphanumeric(8));
+        loan2.setUuid(RandomStringUtils.randomAlphanumeric(8));
         loan2.setPending(true);
         loan2.setLoanValue(BigDecimal.valueOf(8000));
 
